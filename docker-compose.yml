@@ -1,0 +1,12 @@
+version: '3.3'
+
+services:
+  nginx:
+    container_name: nginx
+    image: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./app/build:/usr/share/nginx/html
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    restart: unless-stopped
