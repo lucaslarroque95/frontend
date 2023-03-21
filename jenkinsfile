@@ -9,7 +9,7 @@ pipeline{
         stage('install') {
             steps {
                 git branch: 'master', url: 'https://github.com/lucaslarroque95/frontend.git'
-                dir('frontend') {
+                dir('app') {
                     sh 'npm install'
                 }
             }
@@ -19,7 +19,7 @@ pipeline{
     stages {
         stage('deploy') {
             steps {
-                dir('frontend') {
+                dir('.') {
                     sh 'docker-compose up'
                 }
             }
