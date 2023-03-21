@@ -9,16 +9,16 @@ pipeline{
         stage('install') {
             steps {
                 git branch: 'main', credentialsId: 'github', url: 'https://github.com/lucaslarroque95/frontend.git'
-                dir('frontend') {
-                    sh 'ls'
+                dir('frontend/app') {
+                    sh 'npm install'
                 }
             }
         }
 
         stage('deploy') {
             steps {
-                dir('app') {
-                    sh 'ls'
+                dir('frontend') {
+                    sh 'docker-compose up'
                 }
             }
         }
