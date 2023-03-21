@@ -8,13 +8,13 @@ pipeline{
     stages {
         stage('install') {
             steps {
-                git branch: 'master', url: 'https://github.com/lucaslarroque95/frontend.git'
+                git branch: 'main', credentialsId: 'github', url: 'https://github.com/lucaslarroque95/frontend.git'
                 dir('app') {
                     sh 'npm install'
                 }
             }
         }
-        
+
         stage('deploy') {
             steps {
                 dir('.') {
